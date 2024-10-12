@@ -182,8 +182,8 @@ runs:
           else
             sudo mkfs.ext4 -Enodiscard -m0 "/dev/mapper/${VG_NAME}-buildlv"
           fi
-          sudo mount "/dev/mapper/${VG_NAME}-buildlv" "${BUILD_MOUNT_PATH}"
-          sudo chown -R "${{ inputs.build-mount-path-ownership }}" "${BUILD_MOUNT_PATH}"
+          sudo mount "/dev/mapper/${VG_NAME}-buildlv" /
+          sudo chown -R "${{ inputs.build-mount-path-ownership }}" /
 
           # if build mount path is a parent of $GITHUB_WORKSPACE, and has been deleted, recreate it
           if [[ ! -d "${GITHUB_WORKSPACE}" ]]; then
